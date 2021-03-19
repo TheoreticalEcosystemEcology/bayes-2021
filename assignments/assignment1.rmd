@@ -125,6 +125,53 @@ Which is very low. This means the joint probability of someone getting a positiv
 
 # 4. 
 
+### a)
+
+```{r}
+boxes <- matrix(c(2,4,1,5,1,3), ncol = 2, dimnames = list(c("A", "B", "C"), c("red", "white")))
+
+p_red <- function(boxes){
+  
+  pA <- 0.4
+  pB <- 0.1
+  pC <- 0.5
+
+  prA <- boxes["A", "red"]/sum(boxes["A",])
+  prB <- boxes["B", "red"]/sum(boxes["B",])
+  prC <- boxes["C", "red"]/sum(boxes["C",])
+
+  pr <- pA*prA + pB*prB + pC*prC
+
+  return(pr)
+
+}
+```
+
+### b)
+
+```{r}
+p_box <- function(boxes){
+
+  pA <- 0.4
+  pB <- 0.1
+  pC <- 0.5
+
+  prA <- boxes["A", "red"]/sum(boxes["A",])
+  prB <- boxes["B", "red"]/sum(boxes["B",])
+  prC <- boxes["C", "red"]/sum(boxes["C",])
+
+  pr <- pA*prA + pB*prB + pC*prC
+
+  pr_A <- pA*prA/pr
+  pr_B <- pB*prB/pr
+  pr_C <- pC*prC/pr
+
+  return(c(pr_A, pr_B, pr_C)) 
+
+}
+
+```
+
 # 5.
 
 ```{r}
